@@ -3,20 +3,20 @@ import Layout from './components/layout';
 import Navbar from './components/navbar';
 
 export enum TabKey {
-  About = "About",
-  Projects = "Projects",
-  Blog = "Blog",
-  Contact = "Contact",
+  About = "About Me",
+  Projects = "Growth",
+  Blog = "Knowledge logs",
+  Contact = "Socialize",
 }
 
 function App() {
   const [tab, setTab] = useState<TabKey>(TabKey.About);
 
   const tabOffsets: { [key in TabKey]: number } = {
-    About: 0,
-    Projects: 1,
-    Blog: 2,
-    Contact: 3,
+    "About Me": 0,
+    "Growth": 1,
+    "Knowledge logs": 2,
+    "Socialize": 3,
   };
 
   const baseX = 520;

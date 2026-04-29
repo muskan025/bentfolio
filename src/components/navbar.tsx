@@ -10,9 +10,9 @@ export interface NavbarProps {
 
 const Navbar: React.FC<NavbarProps> = ({ tab, setTab }) => {
   const tabs = [
-    { key: TabKey.About, label: "About" },
-    { key: TabKey.Projects, label: "Projects" },
-    { key: TabKey.Contact, label: "Contact" },
+    { key: TabKey.About, label: "About Me" },
+    { key: TabKey.Projects, label: "Growth" },
+    { key: TabKey.Contact, label: "Socialize" },
   ];
 
   const [sliderStyle, setSliderStyle] = useState({ left: 0, width: 0 });
