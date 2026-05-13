@@ -47,54 +47,82 @@ function App() {
             </article>
 
             <blockquote className="rounded-[1.6rem] border-2 border-[#1d1d1b] bg-[#f9f6ef] p-4 text-sm italic shadow-[5px_5px_0_#1d1d1b] sm:text-base">
-              “The wheel of courage will run until you have the will to run the wheel.” — Muskan Dadlani
+              “The wheel of courage will run until you have the will to run the wheel.” — Muskan Dodmani
             </blockquote>
         </div>
-          <aside className="relative rounded-[2rem] border-2 border-[#1d1d1b] bg-[#f9f6ef] p-6 shadow-[5px_5px_0_#1d1d1b] md:min-h-[390px]">
-            <p className="absolute right-4 top-3 text-sm">Resume ↓</p>
-            <h2 className="text-3xl font-semibold sm:text-4xl">I&apos;m Software Engineer</h2>
-            <ul className="mt-5 space-y-3 text-base sm:text-lg">
-              <li>• Available to work</li>
-              <li>• English / Hindi / Urdu / Konkani / Arabic</li>
-              <li>• Explorer, hardworking, and curious</li>
-            </ul>
+            <aside className="rounded-[2rem] border-2 border-[#1d1d1b] bg-[#f9f6ef] p-6 shadow-[5px_5px_0_#1d1d1b] md:min-h-[390px]">
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <span className="rounded-full border-2 border-[#1d1d1b] bg-[#fffdf8] px-4 py-1 text-base">🟢 Available To Work</span>
+              <button className="rounded-xl border-2 border-[#1d1d1b] bg-[#fffdf8] px-4 py-1 text-base">Resume ↓</button>
+            </div>
 
-            <div className="mt-8 rounded-2xl border-2 border-[#1d1d1b] bg-[#fffdf8] p-4">
-               <div className="mt-3 grid grid-cols-2 gap-3 text-sm sm:text-base">
-                <div>
-                  <p className="font-semibold">My time</p>
-                  <p></p>
-                </div>
-                <div>
-                  <p className="font-semibold">Your time</p>
-                  <p>6:00 PM GST</p>
-                </div>
+            <h2 className="mt-4 text-4xl font-semibold leading-none sm:text-5xl">I&apos;m Software Engineer</h2>
+            <p className="mt-3 text-xl text-[#2b2b29]">Explorer, hardworking, and curious</p>
+
+            <div className="mt-5 rounded-3xl border-2 border-[#1d1d1b] bg-[#fffdf8] p-4">
+              <div className="flex flex-wrap gap-2 text-sm sm:text-base">
+                {['India', 'English / Hindi / Urdu / Konkani / Arabic', 'Software Engineer', 'IST', 'MIT University', 'Good Vibes'].map((item) => (
+                  <span key={item} className="rounded-full border-2 border-[#1d1d1b] bg-[#f9f6ef] px-3 py-1">
+                    {item}
+                  </span>
+                ))}
               </div>
             </div>
+            
+           <div className="mt-5 grid gap-3 sm:grid-cols-2">
+  <div className="rounded-2xl border-2 border-[#1d1d1b] bg-[#fffdf8] px-4 py-3 text-center">
+    <p className="text-sm uppercase tracking-wide">My Time</p>
+    <p className="mt-1 text-lg font-medium">
+     {myTime.toLocaleTimeString("en-IN", {
+  timeZone: "Asia/Kolkata",
+  hour: "2-digit",
+  minute: "2-digit",
+})}
+    </p>
+  </div>
+
+  <div className="rounded-2xl border-2 border-[#1d1d1b] bg-[#fffdf8] px-4 py-3 text-center">
+    <p className="text-sm uppercase tracking-wide">Your Time</p>
+    <p className="mt-1 text-lg font-medium">
+      {new Date().toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit",
+      })}
+    </p>
+  </div>
+</div>
           </aside>
         </section>
 
-        <section id="projects" className="mt-10 rounded-[2rem] border-2 border-[#1d1d1b] bg-[#f9f6ef] p-6 shadow-[5px_5px_0_#1d1d1b]">
-          <div className="mb-4 flex items-center justify-between">
-            <h3 className="text-4xl uppercase">Projects →</h3>
-            <p className="text-sm">Red / Yellow / Green</p>
-          </div>
- <div className="mb-4 grid gap-4 md:grid-cols-[1fr_1.25fr]">
-            <article className="rounded-2xl border-2 border-[#1d1d1b] bg-[#fffdf8] p-4">
-              <p className="text-4xl uppercase">Projects →</p>
-            </article>
-            <article className="rounded-2xl border-2 border-[#1d1d1b] bg-[#fffdf8] p-4">
+       <section id="projects" className="mt-10 grid gap-4 md:grid-cols-2">
+          <article className="rounded-[2rem] border-2 border-[#1d1d1b] bg-[#f9f6ef] p-6 shadow-[5px_5px_0_#1d1d1b]">
+            <div className="mb-4 flex items-center justify-between">
+              <h3 className="text-3xl uppercase">Projects →</h3>
+            </div>
+            <div className="rounded-2xl border-2 border-[#1d1d1b] bg-[#fffdf8] p-4">
+              <div className="space-y-2">
+                {projects.map((project) => (
+                  <p key={project.title} className="text-lg font-medium">{project.title}</p>
+                ))}
+              </div>
+            </div>
+          </article>
+
+          <article className="rounded-[2rem] border-2 border-[#1d1d1b] bg-[#f9f6ef] p-6 shadow-[5px_5px_0_#1d1d1b]">
+            <div className="mb-4 flex items-center justify-between">
+              <h3 className="text-3xl uppercase">Skills →</h3>
+              <p className="text-sm">Red / Yellow / Green</p>
+            </div>
+            <div className="rounded-2xl border-2 border-[#1d1d1b] bg-[#fffdf8] p-4">
               <div className="flex flex-wrap gap-2">
-                {['Node.js', 'MongoDB', 'React'].map((skill) => (
-                  <span key={skill} className="rounded-full border-2 border-[#1d1d1b] px-4 py-1 text-2xl">
+               {projects[0].stack.map((skill) => (
+                  <span key={skill} className="rounded-full border-2 border-[#1d1d1b] px-4 py-1 text-xl">
                     {skill}
                   </span>
                 ))}
               </div>
-            </article>
-          </div>
-
-         
+            </div>
+          </article>
         </section>
         
         <section id="contact" className="mt-6 grid gap-4 md:grid-cols-2">
