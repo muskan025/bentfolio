@@ -140,3 +140,16 @@ html {
 .animate-ping {
   animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
+
+@keyframes skills-marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.skills-marquee {
+  --skills-duration: 16s;
+  display: flex;
+  width: max-content;
+  gap: 0.5rem;
+  animation: skills-marquee var(--skills-duration) linear infinite;
+}

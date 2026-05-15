@@ -1,10 +1,20 @@
+import { useMemo, useState } from 'react';
+
 const languages = [
-  { name: 'English', color: '#3b82f6', proficiency: 'Fluent', flair: 'Nuanced professional communication' },
+  { name: 'English', color: '#ef4444', proficiency: 'Fluent', flair: 'Nuanced professional communication' },
   { name: 'Hindi', color: '#10b981', proficiency: 'Fluent', flair: 'Native-level comfort in conversation' },
   { name: 'Urdu', color: '#f59e0b', proficiency: 'Fluent', flair: 'Expressive and culturally rich tone' },
   { name: 'Konkani', color: '#8b5cf6', proficiency: 'Fluent', flair: 'Warm day-to-day communication' },
-  { name: 'Arabic', color: '#ef4444', proficiency: 'Beginner', flair: 'Actively learning with consistency' },
+  { name: 'Arabic', color: '#3b82f6', proficiency: 'Beginner', flair: 'Actively learning with consistency' },
 ];
+
+const sliderSpeeds = {
+  slow: 24,
+  medium: 16,
+  fast: 10,
+} as const;
+
+type SliderSpeed = keyof typeof sliderSpeeds;
 
 export enum TabKey {
   About = "About",
@@ -19,6 +29,9 @@ function App() {
     { title: 'Language Companion', stack: ['TypeScript', 'Tailwind', 'Framer Motion'] },
     { title: 'Portfolio V2', stack: ['Vite', 'React', 'API Integrations'] },
   ];
+
+   const [sliderSpeed, setSliderSpeed] = useState<SliderSpeed>('medium');
+  const marqueeSkills = useMemo(() => [...projects[0].stack, ...projects[0].stack], [projects]);
 
   const myTime = new Date();
 
@@ -42,14 +55,6 @@ function App() {
                <h1 className="mt-8 text-5xl uppercase leading-[0.95] sm:text-6xl md:text-7xl">Welcome</h1>
               <p className="mt-3 text-xl">to</p>
               <p className="mt-3 text-3xl font-medium sm:text-4xl">Nook of مُسکان</p>
-              {/* <div className="mt-8 max-w-md rounded-2xl border-2 border-[#1d1d1b] bg-[#fffdf8] p-4">
-                <p className="mb-2 text-sm font-semibold">Tooltip</p>
-                <ul className="space-y-1 text-sm sm:text-base">
-                  <li>• Origin: Urdu</li>
-                  <li>• Transliteration: Muskan</li>
-                  <li>• Meaning: Smile ☺</li>
-                </ul>
-              </div> */}
             </article>
 
             <blockquote className="rounded-[1.6rem] border-2 border-[#1d1d1b] bg-[#f9f6ef] p-4 text-sm italic shadow-[5px_5px_0_#1d1d1b] sm:text-base">
@@ -80,17 +85,17 @@ function App() {
                 <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#2f2a22]">Languages</p>
                 <p className="text-[10px] text-[#5f5648]">Hover chips</p>
               </div>
-              <div className="flex flex-nowrap items-center gap-2 overflow-x-auto pb-1 text-xs sm:text-sm">
+        <div className="relative z-50 flex flex-wrap items-center gap-2 pb-1 text-xs sm:text-sm overflow-visible">
                 {languages.map((language) => (
                   <span
                     key={language.name}
-                    className="group relative z-0 cursor-default whitespace-nowrap rounded-full border-2 border-[#1d1d1b] bg-[#f9f6ef] px-3 py-1 font-medium transition-all duration-200 hover:z-30 hover:-translate-y-0.5 hover:bg-[#1d1d1b] hover:text-[#fff9ef]"
+                    className="group relative z-0 cursor-default whitespace-nowrap rounded-full border-2 border-[#1d1d1b] bg-[#f9f6ef] px-3 py-1 font-medium transition-all duration-200 hover:z-[9998] hover:-translate-y-0.5 hover:bg-[#1d1d1b] hover:text-[#fff9ef]"
                   >
                     <span className="flex items-center gap-2">
-                      <span className="h-2 w-2 rounded-full bg-[#2a8550] transition-colors duration-300 group-hover:bg-[#ffd166]" />
+                      <span className="h-2 w-2 rounded-full transition-colors duration-300 group-hover:bg-[#ffd166]" style={{ backgroundColor: language.color }}  />
                       {language.name}
                     </span>
-                    <span className="pointer-events-none absolute left-1/2 top-full z-40 mt-2 w-max max-w-40 -translate-x-1/2 scale-95 rounded-xl border-2 border-[#1d1d1b] bg-[#1d1d1b] px-2.5 py-1.5 text-[10px] text-[#fff9ef] opacity-0 shadow-[3px_3px_0_#6f6352] transition-all duration-200 group-hover:scale-100 group-hover:opacity-100">
+                    <span className="pointer-events-none absolute left-1/2 top-full z-[9999] mt-2 w-max max-w-48 -translate-x-1/2 scale-95 rounded-xl border-2 border-[#1d1d1b] bg-[#1d1d1b] px-2.5 py-1.5 text-[10px] text-[#fff9ef] opacity-0 shadow-[3px_3px_0_#6f6352] transition-all duration-200 group-hover:scale-100 group-hover:opacity-100">
                       <span className="block font-semibold text-[#ffd166]">{language.proficiency}</span>
                       <span className="mt-1 block leading-relaxed">{language.flair}</span>
                       <span className="absolute -top-1.5 left-1/2 h-2.5 w-2.5 -translate-x-1/2 rotate-45 border-l-2 border-t-2 border-[#1d1d1b] bg-[#1d1d1b]" />
@@ -142,12 +147,16 @@ function App() {
           <article className="rounded-[2rem] border-2 border-[#1d1d1b] bg-[#f9f6ef] p-6 shadow-[5px_5px_0_#1d1d1b]">
             <div className="mb-4 flex items-center justify-between">
               <h3 className="text-3xl uppercase">Skills →</h3>
-              <p className="text-sm">Red / Yellow / Green</p>
+               <div className="flex items-center gap-2" aria-label="Slider speed controls">
+                <button onClick={() => setSliderSpeed('slow')} className="h-3 w-3 rounded-full border border-[#1d1d1b] bg-red-500" aria-label="Set slow speed" />
+                <button onClick={() => setSliderSpeed('medium')} className="h-3 w-3 rounded-full border border-[#1d1d1b] bg-yellow-400" aria-label="Set medium speed" />
+                <button onClick={() => setSliderSpeed('fast')} className="h-3 w-3 rounded-full border border-[#1d1d1b] bg-green-500" aria-label="Set fast speed" />
+              </div>
             </div>
-            <div className="rounded-2xl border-2 border-[#1d1d1b] bg-[#fffdf8] p-4">
-              <div className="flex flex-wrap gap-2">
-               {projects[0].stack.map((skill) => (
-                  <span key={skill} className="rounded-full border-2 border-[#1d1d1b] px-4 py-1 text-xl">
+     <div className="rounded-2xl border-2 border-[#1d1d1b] bg-[#fffdf8] p-4 overflow-hidden">
+              <div className="skills-marquee" style={{ ['--skills-duration' as string]: `${sliderSpeeds[sliderSpeed]}s` }}>
+                {marqueeSkills.map((skill, index) => (
+                  <span key={`${skill}-${index}`} className="rounded-full border-2 border-[#1d1d1b] px-4 py-1 text-xl whitespace-nowrap bg-[#fffaf0]">
                     {skill}
                   </span>
                 ))}
