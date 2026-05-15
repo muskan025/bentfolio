@@ -149,7 +149,49 @@ html {
 .skills-marquee {
   --skills-duration: 16s;
   display: flex;
-  width: max-content;
-  gap: 0.5rem;
+  width: fit-content;
+  min-width: 100%;
+  gap: 0.75rem;
   animation: skills-marquee var(--skills-duration) linear infinite;
+}
+
+
+.skills-shell {
+  position: relative;
+  background: linear-gradient(135deg, #fffdf8 0%, #f7efdf 48%, #fff8ea 100%);
+}
+
+.skills-shell::before,
+.skills-shell::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2.75rem;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.skills-shell::before {
+  left: 0;
+  background: linear-gradient(to right, #fffdf8 18%, rgba(255, 253, 248, 0));
+}
+
+.skills-shell::after {
+  right: 0;
+  background: linear-gradient(to left, #fffdf8 18%, rgba(255, 253, 248, 0));
+}
+
+.skill-pill {
+  position: relative;
+  z-index: 1;
+  color: #2d261e;
+  background: linear-gradient(180deg, #fffefd 0%, #f6e9d5 100%);
+  box-shadow: 0 2px 0 #1d1d1b;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.skill-pill:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 0 #1d1d1b;
 }

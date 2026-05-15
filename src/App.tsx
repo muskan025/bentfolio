@@ -43,8 +43,7 @@ function App() {
     {name: 'Tanstack Query', color: '#3b82f6' },
   ]
    const [sliderSpeed, setSliderSpeed] = useState<SliderSpeed>('medium');
-  const marqueeSkills = useMemo(() =>  [...techStack.map((tech) => tech.name), ...techStack.map((tech) => tech.name)], [techStack]);
-
+  const marqueeSkills = useMemo(() => [...techStack, ...techStack], [techStack]);
   const myTime = new Date();
 
   return (
@@ -165,11 +164,17 @@ function App() {
                 <button onClick={() => setSliderSpeed('fast')} className="h-3 w-3 rounded-full border border-[#1d1d1b] bg-green-500" aria-label="Set fast speed" />
               </div>
             </div>
-     <div className="rounded-2xl border-2 border-[#1d1d1b] bg-[#fffdf8] p-4 overflow-hidden">
+       <div className="skills-shell overflow-hidden rounded-2xl border-2 border-[#1d1d1b] bg-[#fffdf8] p-4">
               <div className="skills-marquee" style={{ ['--skills-duration' as string]: `${sliderSpeeds[sliderSpeed]}s` }}>
-                {marqueeSkills.map((skill, index) => (
-                  <span key={`${skill}-${index}`} className="rounded-full border-2 border-[#1d1d1b] px-4 py-1 text-xl whitespace-nowrap bg-[#fffaf0]">
-                    {skill}
+                 {marqueeSkills.map((tech, index) => (
+                  <span
+                    key={`${tech.name}-${index}`}
+                    className="skill-pill whitespace-nowrap rounded-full border-2 border-[#1d1d1b] px-4 py-1.5 text-base font-medium"
+                  >
+                    <span className="inline-flex items-center gap-2">
+                      <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: tech.color }} />
+                      {tech.name}
+                    </span>
                   </span>
                 ))}
               </div>
