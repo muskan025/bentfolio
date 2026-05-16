@@ -11,7 +11,7 @@ const languages = [
 const sliderSpeeds = {
   slow: 0,
   medium: 15,
-  fast: 4,
+  fast: 5,
 } as const;
 
 type SliderSpeed = keyof typeof sliderSpeeds;
@@ -155,7 +155,7 @@ function App() {
             </div>
           </article>
 
-          <article className="rounded-[2rem] border-2 border-[#1d1d1b] bg-[#f9f6ef] p-6 shadow-[5px_5px_0_#1d1d1b]">
+          <article className="rounded-[2rem] border-2 border-[#1d1d1b] bg-[#f9f6ef] p-6 shadow-[5px_5px_0_#1d1d1b] overflow-hidden">
             <div className="mb-4 flex items-center justify-between">
               <h3 className="text-3xl uppercase">Skills →</h3>
                <div className="flex items-center gap-2" aria-label="Slider speed controls">

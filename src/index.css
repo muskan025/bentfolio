@@ -12,6 +12,7 @@ body {
   height: 100%; /* Allow body to expand and scroll with content */
   scrollbar-width: none;
   background-color: #181818;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
 #root {
