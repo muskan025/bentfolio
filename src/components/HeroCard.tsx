@@ -27,7 +27,7 @@ export function HeroCard() {
               to
             </p>
 {/* مُسکان */}
-            <h1 className="mt-1 whitespace-nowrap font-serif text-[2.85rem] font-semibold leading-[0.95] text-[#fffdf8] drop-shadow-[0_6px_22px_rgba(0,0,0,0.65)] sm:text-[3.45rem] lg:text-[3.8rem]">
+            <h1 className="mt-1 max-w-full font-serif text-[2.85rem] font-semibold leading-[0.95] text-[#fffdf8] drop-shadow-[0_6px_22px_rgba(0,0,0,0.65)] sm:whitespace-nowrap sm:text-[3.45rem] lg:text-[3.8rem]">
   <span lang="ar" className="font-arabic font-semibold text-amber-500">Muskan's </span>Nook
 </h1>
 
