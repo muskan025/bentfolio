@@ -1,11 +1,11 @@
 
 const chipClassName =
-  "rounded-full border border-[#cfc1aa] bg-[#fbf6ec] px-3 py-1 text-xs font-medium text-[#2b342a] shadow-[0_8px_18px_rgba(14,20,16,0.06)] transition-colors duration-300 hover:border-[#8ca069] hover:bg-[#eef2e4]";
+  "rounded-full border border-[#cfc1aa] bg-[#fbf6ec] px-3 py-1 text-xs font-medium text-[#2b342a] shadow-[0_8px_18px_rgba(14,20,16,0.06)] transition-all duration-300 hover:border-[#8ca069] hover:bg-[#eef2e4] active:scale-95 active:border-[#8ca069] active:bg-[#eef2e4]";
 
 const projectTracks = [
   {
     date: "2024–2026",
-    roleLabel: "Software Engineer Intern → Associate Software Engineer",
+    roleLabel: "Software Engineer Intern → Associate Software Engineer → Senior Associate",
     project: "BIZ Nest Operations Suite",
     context: "Internal company management platform",
     description:
@@ -16,6 +16,7 @@ const projectTracks = [
       // "Built a report generation module using Redis as a message broker and BullMQ for background job processing, enabling report generation, cancellation, retry handling, and more reliable async workflows."
       "Moved report generation off the main thread into a BullMQ + Redis job queue — API responds instantly with a job ID, worker processes in background, client polls for status. Added cancellation and retry so failed or abandoned jobs don't silently disappear.",
       "Decoupled audit logging from controllers using Node.js EventEmitters — core handlers emit events, listeners persist them separately. 500+ daily events logged with no added latency to requests.",
+      "Reduced latency in a core internal module from 9–10 seconds to ~200 ms by rewriting queries as MongoDB aggregation pipelines and fetching only the required fields.",
       
     ],
     tech: ["Node.js", "Streams", "Express", "MongoDB", "EventEmitters", "Redis", "BullMQ"],
